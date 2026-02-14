@@ -137,9 +137,8 @@ Present the developer as a young junior software engineer capable of **scalable 
      - Short explanation that the chatbot is part of a study.  
      - Link to **GitHub** of the study project.  
      - Link to **download PDF** of the study report.  
-  2. **Full Stack Development (CS-465)** — MEAN stack; link and/or embedded demo; description from resume.  
-  3. **Secure Coding (CS-405)** — secure coding project; link and/or embedded demo; description from resume.  
-     *(Or Capstone CS-499 if user prefers.)*
+  2. **Travlr (Full Stack / CS-465)** — MEAN stack; showcase via screenshots + GitHub link; optional live demo link or short video walkthrough (see “Showcase Suggestions” below).  
+  3. **Secure Coding (CS-405)** — survey on secure coding policies + technical vulnerability examples; project card with description + “Download report (PDF)” (thumbnail + button); optional 1–2 before/after code snippets on card (see “Showcase Suggestions” below).
 - **Resume**: **Thumbnail preview** of the resume + **“Download resume”** button that downloads the PDF (file: use `Updated Cyelibi_resume.pdf` in the project).
 - **Contact**: **Contact form** (front-end only for now; visible note: “Backend/email integration will be added later”).
 - **Chatbot**: **Floating widget** powered by Gemini (UI in place; user will configure API/key); evaluate how it looks with the rest of the site.
@@ -153,12 +152,46 @@ Present the developer as a young junior software engineer capable of **scalable 
 Professional, approachable, growth-oriented.
 
 ### Assets to use
-- **Resume PDF**: `Updated Cyelibi_resume.pdf` (copy into project for thumbnail + download).
-- **Study report PDF**: User will provide; link for “download report” for Gemini project.
+- **Resume PDF**: `Updated Cyelibi_resume.pdf` — user will add to project folder (thumbnail + download). **Reminder**: After the assets folder is created, remind user to add this file.
+- **Study report PDF**: `LLM Food data & Graph Analysis.pdf` — same treatment as resume (thumbnail + download link for Gemini project). User will add to project folder. **Reminder**: After the assets folder is created, remind user to add this file.
+
+---
+
+## Showcase Suggestions (Travlr + Secure Coding)
+
+### 1. Travlr (Full Stack / CS-465) — how to showcase
+
+You don’t need a live app running 24/7. Pick what fits what you have:
+
+| Option | What you need | How it looks on the portfolio |
+|--------|----------------|-------------------------------|
+| **A. Screenshots + GitHub** | 3–5 screenshots (e.g. home, main feature, one other screen), repo link | Project card: title “Travlr”, 1–2 sentence blurb, tech badges (MongoDB, Express, Angular, Node), 2–4 image carousel or grid, button “View code on GitHub”. No deployment required. |
+| **B. Live demo link** | App deployed (e.g. Render, Railway, Vercel, Heroku) | Same as A, plus a “View live demo” button that opens the app in a new tab. Optional: embed in iframe if the app allows it. |
+| **C. Short video walkthrough** | 1–2 min screen recording (Loom, OBS, or phone) showing: login → main feature → maybe one more flow | Project card: blurb + “Watch demo” that opens the video (YouTube unlisted or file in repo). Great if the app isn’t deployed. |
+| **D. Combination (recommended)** | Screenshots + GitHub + (if you have it) live link or video | Card with: title, short description, tech stack, 3–4 screenshots, “View on GitHub”, and either “View live demo” or “Watch 1‑min demo”. |
+
+**Practical path**: Start with **screenshots + GitHub** (Option A or D). Add a **video walkthrough** if the app isn’t deployed; add a **live demo** link later if you deploy it. The portfolio will have a clear “real use case”: “Full-stack travel-related app (MEAN), with API design, data modeling, and front-end flows.”
+
+---
+
+### 2. Secure Coding (CS-405) — survey + vulnerability examples as real use case
+
+The project is a **survey on secure coding policies** plus **technical vulnerability examples**. You can frame it as a real use case (security analysis and recommendations) without a runnable app:
+
+| Element | How to showcase |
+|--------|------------------|
+| **Project card** | Title: e.g. “Secure Coding Practices & Vulnerability Analysis”. Short description: “Survey of secure coding policies and technical case studies of common vulnerabilities (e.g. OWASP-style); mitigation patterns and recommendations.” |
+| **Deliverable** | **PDF report** (same treatment as resume): thumbnail preview + “Download report” button. Put the survey + technical examples in one PDF; user adds it to the project folder. Recruiters get the full depth. |
+| **Skill in context** | In **Skills**, add a line like “Secure coding & vulnerability awareness” and optionally “(see project)”. The project becomes the proof of that skill. |
+| **Before/after (optional)** | On the project card, 1–2 tiny code snippets: “Vulnerable pattern” → “Safe pattern” (e.g. input validation, parameterized query). Makes the “technical examples” visible at a glance. |
+| **No “live app”** | No need for a running app. The “real use case” is: analyzing policies, documenting vulnerabilities, and recommending safer patterns—exactly what you did. |
+
+**Summary**: One project card with title, 2–3 sentence description, “Download report (PDF)” (thumbnail + button), and optionally 1–2 before/after snippets or “Key topics” bullets (e.g. SQL injection, XSS, secure coding policies). Remind user to add the Secure Coding report PDF to the assets folder when it exists.
 
 ---
 
 ## Status
 - Refinement round 2 complete; Revised Prompt v3 saved
-- Projects 2 & 3 suggested: Full Stack (CS-465), Secure Coding (CS-405) [or Capstone CS-499]
+- Projects 2 & 3: Travlr (CS-465), Secure Coding (CS-405) — showcase approach defined above
+- **Reminder**: After creating the project/assets folder, remind user to add: `Updated Cyelibi_resume.pdf`, `LLM Food data & Graph Analysis.pdf` (and Secure Coding report PDF when ready)
 - Ready for implementation
