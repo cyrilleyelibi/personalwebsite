@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --navy-bg: #0a0f1a;
+  --navy-surface: #0f1729;
+  --navy-card: #1a2744;
+  --navy-border: #243b5c;
+  --accent: #5b8fd4;
+  --accent-muted: #3d6ba8;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-navy-950 text-gray-100 antialiased;
+  background-color: var(--navy-bg);
+}
+
+/* Subtle transition for section entrance */
+.section-enter {
+  @apply opacity-0 translate-y-4;
+}
+.section-enter-active {
+  @apply opacity-100 translate-y-0 transition-all duration-500 ease-out;
+}
