@@ -5,21 +5,36 @@ import { useState } from "react";
 export default function ChatbotWidget() {
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState("");
+  const [loading, setLoading] = useState(false);
   const [messages, setMessages] = useState<{ role: "user" | "assistant"; text: string }[]>([]);
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (!input.trim()) return;
-    setMessages((m) => [...m, { role: "user", text: input.trim() }]);
+    const text = input.trim();
+    if (!text) return;
+    setMessages((m) => [...m, { role: "user", text }]);
     setInput("");
-    // Placeholder: no API yet. User will add Gemini API key later.
-    setMessages((m) => [
-      ...m,
-      {
-        role: "assistant",
-        text: "Gemini API is not configured yet. Add your API key to enable the chatbot (see README).",
-      },
-    ]);
+    setLoading(true);
+    try {
+      const res = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: text }),
+      });
+      const data = await res.json();
+      const reply =
+        data.error === "not_configured" || data.error === "server_error"
+          ? data.text
+          : data.text || "No response.";
+      setMessages((m) => [...m, { role: "assistant", text: reply }]);
+    } catch {
+      setMessages((m) => [
+        ...m,
+        { role: "assistant", text: "Could not reach the server. Please try again." },
+      ]);
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
@@ -39,10 +54,13 @@ export default function ChatbotWidget() {
           <span className="text-navy-400">{open ? "−" : "+"}</span>
         </button>
         <div className="flex-1 overflow-y-auto p-3 space-y-3">
-          {messages.length === 0 && (
+          {messages.length === 0 && !loading && (
             <p className="text-sm text-navy-500">
-              Ask me anything. Configure the Gemini API key to enable responses.
+              Ask me anything. Add GEMINI_API_KEY to your env to enable responses.
             </p>
+          )}
+          {loading && (
+            <p className="text-sm text-navy-500">Thinking...</p>
           )}
           {messages.map((msg, i) => (
             <div
@@ -68,7 +86,8 @@ export default function ChatbotWidget() {
             />
             <button
               type="submit"
-              className="rounded-lg bg-navy-500 px-3 py-2 text-sm font-medium text-white hover:bg-navy-400"
+              disabled={loading}
+              className="rounded-lg bg-navy-500 px-3 py-2 text-sm font-medium text-white hover:bg-navy-400 disabled:opacity-50"
             >
               Send
             </button>

@@ -25,7 +25,7 @@ export default function Resume() {
           </div>
           <div className="mt-6 text-center">
             <a
-              href={RESUME_PDF}
+              href={encodeURI(RESUME_PDF)}
               download="Cyrille_Yelibi_Resume.pdf"
               className="inline-flex items-center gap-2 rounded-lg bg-navy-500 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-navy-400"
             >

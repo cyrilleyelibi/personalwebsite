@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Nav from "@/components/Nav";
-import Footer from "@/components/Footer";
-import ChatbotWidget from "@/components/ChatbotWidget";
+import Nav from "../components/Nav";
+import Footer from "../components/Footer";
+import ChatbotWidget from "../components/ChatbotWidget";
 
 export const metadata: Metadata = {
   title: "Cyrille Yelibi | Junior Software Engineer",

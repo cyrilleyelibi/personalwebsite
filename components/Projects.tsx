@@ -1,3 +1,5 @@
+import React from "react";
+
 const PROJECTS = [
   {
     id: "gemini",
@@ -6,7 +8,7 @@ const PROJECTS = [
     description:
       "Data science research using Google's Gemini LLM and Text Embedding APIs: generated a dataset of African cuisine recipes, built high-dimensional embeddings, and applied KNN and Louvain clustering to identify semantic similarities. This site's chatbot uses the same text-generation approach from the study.",
     tech: ["Gemini API", "Python", "Text embeddings", "Graph analysis"],
-    githubUrl: "#", // Replace with your study repo URL
+    githubUrl: "https://github.com/cyrilleyelibi/LLM_Project.git", // Replace with your study repo URL
     reportPdfUrl: "/documents/LLM Food data & Graph Analysis.pdf",
     reportLabel: "Download study report (PDF)",
     embedChatbot: true,
@@ -18,7 +20,7 @@ const PROJECTS = [
     description:
       "MEAN stack application (MongoDB, Express, Angular, Node). Designed and developed with focus on problem-solving, best practices, and version control with GitHub.",
     tech: ["MongoDB", "Express", "Angular", "Node.js"],
-    githubUrl: "#", // Replace with your Travlr repo URL
+    githubUrl: "https://github.com/cyrilleyelibi/CS-465.git", // Replace with your Travlr repo URL
     demoUrl: null as string | null,
     screenshotPlaceholder: true,
   },
@@ -82,7 +84,7 @@ export default function Projects() {
                       </a>
                     )}
                     <a
-                      href={project.reportPdfUrl}
+                      href={project.reportPdfUrl ? encodeURI(project.reportPdfUrl) : "#"}
                       download
                       className="text-sm font-medium text-navy-300 underline hover:text-white"
                     >
@@ -127,10 +129,10 @@ export default function Projects() {
                 </div>
               )}
 
-              {project.id === "secure-coding" && "reportPdfUrl" in project && (
+              {project.id === "secure-coding" && "reportPdfUrl" in project && project.reportPdfUrl && (
                 <div className="mt-4">
                   <a
-                    href={project.reportPdfUrl}
+                    href={encodeURI(project.reportPdfUrl)}
                     download
                     className="inline-flex items-center rounded bg-navy-600 px-4 py-2 text-sm font-medium text-white hover:bg-navy-500"
                   >

@@ -48,10 +48,23 @@ Add these files to `public/documents/` when you’re ready:
 
 ---
 
+## Checkpoint 4: PDF links + Gemini chatbot API
+
+**What we did**
+
+- **PDF link encoding**: Used `encodeURI()` for all PDF `href`s so filenames with spaces and `&` (e.g. `LLM Food data & Graph Analysis.pdf`) work when clicked. Updated in `components/Projects.tsx` (Gemini report, Secure Coding report) and `components/Resume.tsx` (resume download).
+- **Chat API** (`app/api/chat/route.ts`): POST endpoint that accepts `{ message }`, calls the Gemini API (via `@google/generative-ai`), and returns `{ text }`. If `GEMINI_API_KEY` is missing, returns a friendly “not configured” message.
+- **Chatbot wiring** (`components/ChatbotWidget.tsx`): On submit, the widget POSTs to `/api/chat` and displays the response; shows “Thinking...” while loading and handles errors.
+- **Docs**: README updated with `.env.local` and `GEMINI_API_KEY`; checkpoint 4 added here.
+
+**To enable the chatbot**: Add `GEMINI_API_KEY=your_key` to `.env.local` and restart the dev server.
+
+---
+
 ## Next steps (you or a future session)
 
-- Add your PDFs to `public/documents/`.
-- Replace placeholder `githubUrl` in `components/Projects.tsx` for the Gemini study and Travlr.
+- Add your PDFs to `public/documents/` (resume and study report are already referenced).
+- Replace or confirm `githubUrl` in `components/Projects.tsx` for the Gemini study and Travlr (URLs are already set if you added them).
 - Add Travlr screenshots (or video link) and optional live demo URL.
-- Configure Gemini API key and wire the chatbot to your backend/API route.
-- Deploy (e.g. Vercel or Netlify).
+- Add Secure Coding report PDF to `public/documents/` when ready.
+- Deploy (e.g. Vercel or Netlify); set `GEMINI_API_KEY` in the host’s environment.
