@@ -10,7 +10,7 @@ export default function Resume() {
           {/* Thumbnail: first page preview or placeholder */}
           <div className="aspect-[8.5/11] max-w-xs mx-auto rounded-lg border border-navy-700 bg-navy-800/80 overflow-hidden">
             <object
-              data={RESUME_PDF}
+              data={encodeURI(RESUME_PDF)}
               type="application/pdf"
               className="h-full w-full"
               aria-label="Resume preview"
