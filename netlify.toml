@@ -1,0 +1,10 @@
+# Netlify config for Next.js (App Router + API routes)
+# Netlify auto-detects Next.js and uses the right adapter; this locks the build.
+
+[build]
+  command = "npm run build"
+  environment = { NODE_VERSION = "20" }
+
+# Optional: uncomment to pin the Next.js plugin (Netlify usually adds it automatically)
+# [[plugins]]
+#   package = "@netlify/plugin-nextjs"

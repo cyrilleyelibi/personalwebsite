@@ -4,12 +4,23 @@ Portfolio site for Cyrille Yelibi — junior software engineer. Built with Next.
 
 ## Run locally
 
+**Always run from the project root** (the folder that contains `app/` and `package.json`):
+
 ```bash
+cd personalwebsite   # if you're in a parent folder
 npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+Open [http://localhost:3000](http://localhost:3000) (not `.../404`).
+
+**If you see 404 at the home page:** Run once with a clean cache:
+
+```bash
+npm run dev:clean
+```
+
+Then use `npm run dev` as usual. The `dev` script checks that you're in the project root and will error with instructions if not.
 
 ## Add your PDFs
 
@@ -46,5 +57,13 @@ Even if someone reverse‑engineers or inspects your code, they will not see the
 
 ## Deploy
 
-- **Vercel**: Connect the repo and deploy (default Next.js preset). Set `GEMINI_API_KEY` in Project → Environment Variables.
-- **Netlify**: Use the Next.js runtime; build command `npm run build`, publish directory `.next`. Set `GEMINI_API_KEY` in Environment.
+### Netlify (prototype)
+
+1. Push your code to GitHub and connect the repo in [Netlify](https://app.netlify.com): **Add new site → Import an existing project**.
+2. Netlify will detect Next.js; the repo’s **`netlify.toml`** sets the build command and Node version. No extra config needed.
+3. **Environment variable:** In Netlify → **Site settings → Environment variables**, add **`GEMINI_API_KEY`** (secret) so the chatbot works in production.
+4. Deploy. Your site will be at `https://<random>.netlify.app` (or your custom domain).
+
+### Vercel
+
+- Connect the repo and deploy (default Next.js preset). Set **`GEMINI_API_KEY`** in Project → Settings → Environment Variables.
