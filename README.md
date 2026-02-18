@@ -64,6 +64,8 @@ Even if someone reverse‑engineers or inspects your code, they will not see the
 3. **Environment variable:** In Netlify → **Site settings → Environment variables**, add **`GEMINI_API_KEY`** (secret) so the chatbot works in production.
 4. Deploy. Your site will be at `https://<random>.netlify.app` (or your custom domain).
 
+**If you see "Page not found" on Netlify:** The repo’s `netlify.toml` enables `@netlify/plugin-nextjs` so the Next.js app is served (not a static folder). After pulling the latest code, trigger a new deploy. If it still fails, in Netlify go to **Deploys** → open the latest deploy → check **Build log** for errors.
+
 ### Vercel
 
 - Connect the repo and deploy (default Next.js preset). Set **`GEMINI_API_KEY`** in Project → Settings → Environment Variables.
