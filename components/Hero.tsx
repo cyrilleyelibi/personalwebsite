@@ -1,8 +1,24 @@
+import Image from "next/image";
+
+const PROFILE_IMAGE = "/profile picture.JPG";
+
 export default function Hero() {
   return (
     <section id="about" className="border-b border-navy-800/50 bg-navy-900/30 px-4 py-16 sm:px-6 sm:py-24">
       <div className="mx-auto max-w-3xl text-center">
-        <h1 className="text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl">
+        <div className="flex justify-center">
+          <div className="relative h-32 w-32 overflow-hidden rounded-full border-2 border-navy-600 ring-2 ring-navy-500/50 sm:h-40 sm:w-40">
+            <Image
+              src={PROFILE_IMAGE}
+              alt="Cyrille Yelibi"
+              fill
+              className="object-cover"
+              sizes="(max-width: 640px) 128px, 160px"
+              priority
+            />
+          </div>
+        </div>
+        <h1 className="mt-6 text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl">
           Cyrille Yelibi
         </h1>
         <p className="mt-3 text-lg font-medium text-navy-300 sm:text-xl">

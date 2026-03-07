@@ -36,11 +36,16 @@ See **`CHECKPOINTS.md`** for a step-by-step “what we did” summary of the bui
 
 ## Chatbot (Gemini)
 
-The floating chatbot calls **`/api/chat`**, which uses the Gemini API. To enable real responses:
+**What’s in place:** Floating widget (bottom-right), POST to `/api/chat`, API route that calls Gemini and returns text, model `gemini-1.5-flash`, and safe error handling (no key or server error → friendly message).
 
-1. Get a [Gemini API key](https://ai.google.dev/).
-2. Set **`GEMINI_API_KEY`** via environment (see Security below)—never put the key in code or commit it.
-3. Restart `npm run dev`. The chatbot will send messages to Gemini and show replies. Without the key, it shows a short “not configured” message.
+**To turn it on:**
+
+- **Local:** Add `GEMINI_API_KEY=your_key` to `.env.local`, then restart `npm run dev`.
+- **Production (Netlify):** In Netlify → **Site configuration** → **Environment variables** → add **`GEMINI_API_KEY`** (secret). Redeploy so the chatbot works on your live site.
+</think>
+Updating the todo and summarizing:
+<｜tool▁calls▁begin｜><｜tool▁call▁begin｜>
+TodoWrite
 
 ## Security (API key)
 

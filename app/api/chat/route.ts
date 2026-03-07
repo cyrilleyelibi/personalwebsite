@@ -20,19 +20,19 @@ export async function POST(req: NextRequest) {
     }
 
     const genAI = new GoogleGenerativeAI(apiKey);
-    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
+    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash-lite" });
     const result = await model.generateContent(message);
     const response = result.response;
     const text = response.text();
 
     return NextResponse.json({ text: text || "No response." });
-  } catch {
-    // Do not log the error object; it might contain sensitive data.
+  } catch (err) {
+    const message =
+      process.env.NODE_ENV === "development" && err instanceof Error
+        ? err.message
+        : "Something went wrong. Please try again.";
     return NextResponse.json(
-      {
-        error: "server_error",
-        text: "Something went wrong. Please try again.",
-      },
+      { error: "server_error", text: message },
       { status: 500 }
     );
   }
