@@ -2,6 +2,25 @@
 
 import { useState } from "react";
 
+function ChatBubbleIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+      aria-hidden
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
+      />
+    </svg>
+  );
+}
+
 export default function ChatbotWidget() {
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState("");
@@ -47,11 +66,22 @@ export default function ChatbotWidget() {
         <button
           type="button"
           onClick={() => setOpen((o) => !o)}
-          className="flex items-center justify-between border-b border-navy-700 bg-navy-800 px-4 py-3 text-left text-sm font-medium text-white"
+          className={`flex w-full items-center border-b border-navy-700 bg-navy-800 text-white ${
+            open ? "justify-between gap-2 px-4 py-3 text-left text-sm font-medium" : "justify-center p-0 h-14"
+          }`}
           aria-label={open ? "Close chatbot" : "Open chatbot"}
         >
-          <span>Chat (Gemini)</span>
-          <span className="text-navy-400">{open ? "−" : "+"}</span>
+          {open ? (
+            <>
+              <span className="flex items-center gap-2">
+                <ChatBubbleIcon className="h-5 w-5 shrink-0 text-navy-300" />
+                Chat
+              </span>
+              <span className="text-navy-400">−</span>
+            </>
+          ) : (
+            <ChatBubbleIcon className="h-6 w-6 text-navy-200" />
+          )}
         </button>
         <div className="flex-1 overflow-y-auto p-3 space-y-3">
           {messages.length === 0 && !loading && (
@@ -101,9 +131,7 @@ export default function ChatbotWidget() {
           className="fixed bottom-4 right-4 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-navy-500 text-white shadow-lg hover:bg-navy-400 sm:hidden"
           aria-label="Open chatbot"
         >
-          <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-          </svg>
+          <ChatBubbleIcon className="h-7 w-7" />
         </button>
       )}
     </>
