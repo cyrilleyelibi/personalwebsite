@@ -86,7 +86,7 @@ export default function ChatbotWidget() {
         <div className="flex-1 overflow-y-auto p-3 space-y-3">
           {messages.length === 0 && !loading && (
             <p className="text-sm text-navy-500">
-              Ask me anything. Add GEMINI_API_KEY to your env to enable responses.
+              Ask me anything. Send a message to start.
             </p>
           )}
           {loading && (
